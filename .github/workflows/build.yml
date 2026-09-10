@@ -1,0 +1,22 @@
+name: Build PDF
+on:
+  push:
+    branches: [master, main]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: xu-cheng/latex-action@v3
+        with:
+          root_file: YOUR_FILE.tex
+      - run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add -f YOUR_FILE.pdf
+          git commit -m "Rebuild PDF" || echo "no changes"
+          git push
