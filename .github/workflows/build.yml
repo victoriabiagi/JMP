@@ -17,6 +17,6 @@ jobs:
       - run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add -f YOUR_FILE.pdf
+          git add -f draft_0926.pdf
           git commit -m "Rebuild PDF" || echo "no changes"
           git push
