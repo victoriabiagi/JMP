@@ -20,3 +20,4 @@ jobs:
           git add -f draft_0926.pdf
           git commit -m "Rebuild PDF" || echo "no changes"
           git push
+        
