@@ -11,10 +11,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: xu-cheng/latex-action@v3
+        continue-on-error: true
         with:
           root_file: draft_0926.tex
-      - run: |
+          latexmk_shell_escape: false
+          args: -pdf -f -interaction=nonstopmode -file-line-error
+
+      - if: always()
+        run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add -f draft_0926.pdf
